@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1 style="line-height: 50px;">Сравнение телефонов</h1>
+            <table style="margin:left; width:50%; height:100%; line-height: 30px;">
+
+			  <tr>
+                  <td><b>Модель:</b></td>
+			    {% for phone in phones %}
+                  <td><b>{{ phone.model }}</b></td>
+			    {% endfor %}
+			  </tr>
+
+                <tr>
+    			<td>Цена:</td>
+			    {% for phone in phones %}
+			    <td>{{ phone.price }}</td>
+			    {% endfor %}
+                </tr>
+
+                <tr>
+    			<td>Операционная система:</td>
+			    {% for phone in phones %}
+			    <td>{{ phone.os }}</td>
+			    {% endfor %}
+                </tr>
+
+                <tr>
+    			<td>Оперативная память:</td>
+			    {% for phone in phones %}
+			    <td>{{ phone.memory }}</td>
+			    {% endfor %}
+                </tr>
+
+                <tr>
+    			<td>Количество сим-карт:</td>
+			    {% for phone in phones %}
+			    <td>{{ phone.sim }}</td>
+			    {% endfor %}
+                </tr>
+
+                <tr>
+    			<td>GPS:</td>
+			    {% for phone in phones %}
+			    <td>{{ phone.gps|yesno:"✓, --" }}</td>
+			    {% endfor %}
+                </tr>
+
+                <tr>
+    			<td>FM радио:</td>
+			    {% for phone in phones %}
+			    <td>{{ phone.fmradio|yesno:"✓, --"   }}</td>
+			    {% endfor %}
+                </tr>
+
+                <tr><td style="padding-top: 20px; font-weight: bold;"><i>Дополнительно</i></td></tr>
+
+                <tr>
+    			<td>Air pods:</td>
+			    {% for phone in phones %}
+			    <td>{{ phone.pods|yesno:"✓, --" }}</td>
+			    {% endfor %}
+                </tr>
+
+                <tr>
+    			<td>Сканер отпечатка пальцев:</td>
+			    {% for phone in phones %}
+			    <td>{{ phone.fingerprint|yesno:"✓, --"  }}</td>
+			    {% endfor %}
+                </tr>
+
+			</table>
+
+        </div>
+    </div>
+{% endblock %}

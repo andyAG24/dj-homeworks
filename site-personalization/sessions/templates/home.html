@@ -8,5 +8,19 @@
         <div class="header">
             <h1>Игра "Угадай число"</h1>
         </div>
+        <p>{{ message }}</p>
+        {% if current_value %}
+            Загаданное значение: {{ current_value }}.
+        {% else %}
+            {% if attempts %}
+                Уже совершено {{ attempts }} попыток угадать число.
+            {% endif %}
+            Введите число от {{ min_value }} до {{ max_value }} включтельно.
+            <form>
+                <input name="game_value" type="number" max="{{ max_value }}", min="{{ min_value }}">
+                <input type="submit">
+            </form>
+        {% endif %}
+        
     </div>
 {% endblock %}

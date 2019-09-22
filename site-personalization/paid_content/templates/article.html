@@ -1,12 +1,14 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block title %}Заголовок статьи{% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="header">
-            <h3>Заголовок статьи</h3>
+            <img src="{{ article.image.url }}" alt="{{ article.title }}">
+            <h3>{{ article.title }}</h3>
+            <span>{{ article.text }}</span>
         </div>
+        <a href="{% url 'articles' %}">Назад</a>
     </div>
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    Новости интернет-магазина
+{% endblock title %}
+{% block content %}
+    <main role="main">
+        <h1 class="display-4"> Наши новости </h1>
+
+
+{% for article in articles %}
+        <div>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 class="display-4"> {{ article.name }} </h1>
+                    <p> {{ article.text|safe }} </p>
+                    <address>Автор статьи {{ article.author}} </address>
+                    <p>Опубликовано {{ article.created|date:'d-M-Y'}}</p>
+                </div>
+            </div>
+            <div class="container mb-5">
+
+            </div>
+        </div>
+
+
+{% endfor %}
+    </main>
+    {% include 'footer.html' %}
+{% endblock content %}

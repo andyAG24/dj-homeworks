@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+    Интернет-магазин / {{ product.name }}
+{% endblock title %}
+{% block content %}
+    <main role="main">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>{{ product.name }}</h2>
+
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" width="120" alt="{{ product.name }}">
+                    {% endif %}
+                    <p>{{ product.description }}</p>
+                    <p>Стоимость: {{ product.price }} руб.</p>
+                    <form action="{% url 'create_cart' %}?product_id={{ product.id }}&next={{ request.path }}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-secondary btn-sm btn-outline-primary" value="Купить">
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+{% endblock content %}
